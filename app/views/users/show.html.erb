@@ -3,6 +3,9 @@
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
+  <% @user.event do |ev| %>
+  <li><%= event %></li>
+  <% end %>
 </p>
 
 <p>
