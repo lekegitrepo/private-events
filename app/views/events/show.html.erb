@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<hr>
+
 <p>Event Creator: <strong> <%= @event.creator.name %> </strong></p>
+
+<hr>
 
 <p>
   <strong>Name:</strong>
@@ -21,6 +25,13 @@
   <strong>Description:</strong>
   <%= @event.description %>
 </p>
+
+<hr>
+
+<div><strong>List of Attendees</strong></div>
+<% @event_attendees.attendees.each do |attendee| %>
+  <p> <%= attendee %> </p>
+<% end %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

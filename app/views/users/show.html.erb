@@ -3,16 +3,32 @@
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
-  <%# @user_events_created.events.each do |event| %>
-  <% @user_events_created.each do |event| %>
-    <li><%= event.name %></li>
-  <% end %>
-</p>
-
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
-</p>
+</div>
+  <p><strong>Events Created by <%= @user.name %></strong></p>
+  <% @user_events.events_created.each do |event| %>
+  <%# @user_events_created.each do |event| %>
+    <ul>
+    	<li><%= event.name %></li>
+    </ul>
+  <% end %>
+</div>
+
+<br>
+
+<div>
+	<p><strong>Events Attended by <%= @user.name %></strong></p>
+	<% @user_events.attended_events.each do |attended| %>
+	  <ul>
+	  	<li><%= attended.name %></li>
+	  </ul>
+	<% end %>
+</div>
+
+<br>
+<br>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
