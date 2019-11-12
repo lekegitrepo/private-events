@@ -3,7 +3,8 @@
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
-  <% @user_events_created.events.each do |event| %>
+  <%# @user_events_created.events.each do |event| %>
+  <% @user_events_created.each do |event| %>
     <li><%= event.name %></li>
   <% end %>
 </p>
