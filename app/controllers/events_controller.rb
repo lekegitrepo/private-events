@@ -28,7 +28,11 @@ class EventsController < ApplicationController
   def create
     # @event = Event.new(event_params)
     # @event = current_user.events.build(event_params)
-    @event = current_user.events_created.build(event_params)
+    if current_user.nil?
+      return redirect_to login_path, notice: 'Please login'
+    else
+      @event = current_user.events_created.build(event_params)
+    end
 
     respond_to do |format|
       if @event.save
