@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :attended_events, through: :attendances
   # has_many :events, foreign_key: 'creator_id'
 
-  validates_presence_of :name
+  validates :name, presence: true, length: { minimum: 3, maximum: 20 }
 
   def attend(event)
     attendances.create(attended_event_id: event.id)
