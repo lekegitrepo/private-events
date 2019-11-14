@@ -30,4 +30,5 @@ ActiveRecord::Schema.define(version: 2019_11_12_163025) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "remember_digest"
   end
+
 end
