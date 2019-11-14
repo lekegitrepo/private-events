@@ -35,6 +35,8 @@ group :development, :test do
 
   # The RSpec testing framework
   gem 'rspec-rails'
+
+  gem "database_cleaner"
 end
 
 group :development do
