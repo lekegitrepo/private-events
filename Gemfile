@@ -11,6 +11,8 @@ gem 'sqlite3', '~> 1.4'
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'bootstrap-sass'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -34,7 +36,9 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   # The RSpec testing framework
-  gem 'rspec-rails'
+  # gem 'rspec-rails'
+
+  gem 'rspec-rails', '~> 4.0.0.beta2'
 
   gem "database_cleaner"
 end

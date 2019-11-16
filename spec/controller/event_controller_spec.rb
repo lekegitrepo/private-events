@@ -4,6 +4,13 @@ RSpec.describe EventsController, type: :controller do
   subject { User.new(name: 'test_name') }
   before { subject.save }
 
+  describe 'GET #new' do
+    it 'returns success status' do
+      get :new
+      expect(response).to be_successful
+    end
+  end
+
   describe 'Post #create' do
     it 'Create an event' do
       session[:user_id] = subject.id
