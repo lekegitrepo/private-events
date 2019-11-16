@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
@@ -11,22 +13,22 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'should not be valid' do
-  	@user.name = ''
+    @user.name = ''
     assert_not @user.valid?
   end
 
   test 'nil should not be valid' do
-  	@user.name = nil
+    @user.name = nil
     assert_not @user.valid?
   end
 
   test 'short name should not be valid' do
-  	@user.name = 'T'
+    @user.name = 'T'
     assert_not @user.valid?
   end
 
   test 'long name should not be valid' do
-  	@user.name = 'T' * 25
+    @user.name = 'T' * 25
     assert_not @user.valid?
   end
 end

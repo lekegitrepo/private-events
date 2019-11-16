@@ -1,5 +1,6 @@
-class AttendancesController < ApplicationController
+# frozen_string_literal: true
 
+class AttendancesController < ApplicationController
   def new
     @attendance = Attendance.new
   end

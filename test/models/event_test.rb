@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-
   def setup
     @user = User.new(name: 'test_name', email: 'test@gmail.com')
     @user.save
 
     @event = @user.events_created.create(name: 'Birthday Party', date: Date.today,
-                                location: 'Carribean Island',
-                                description: 'To mark Amanda and Thais birthay')
+                                         location: 'Carribean Island',
+                                         description: 'To mark Amanda and Thais birthay')
   end
 
   test 'should be valid' do
