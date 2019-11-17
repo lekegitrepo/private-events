@@ -6,9 +6,14 @@ RSpec.describe EventsController, type: :controller do
   subject { User.new(name: 'test_name') }
   before { subject.save }
 
-  describe 'GET #new' do
-    it 'returns success status' do
+  describe 'GET' do
+    it 'returns success status for new' do
       get :new
+      expect(response).to be_successful
+    end
+
+    it 'returns success status index' do
+      get :index
       expect(response).to be_successful
     end
   end
@@ -22,6 +27,16 @@ RSpec.describe EventsController, type: :controller do
       expect(Event.first.name).to eq('Birthday Party')
       expect(Event.first.location).to eq('Carribean Island')
       expect(Event.first.description).to eq('To mark Amanda and Thais birthay')
+    end
+  end
+
+  describe 'Post #create' do
+    it 'Create an event' do
+      session[:user_id] = nil
+      post :create, params: { event: { name: 'Birthday Party', date: Date.today,
+                                       location: 'Carribean Island',
+                                       description: 'To mark Amanda and Thais birthay' } }
+      expect(Event.first.name).to eq('Birthday Party')
     end
   end
 end
