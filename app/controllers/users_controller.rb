@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @current_user = User.find(params[:id])
     @upcoming_events = @current_user.attended_events.upcoming
     @past_events = @current_user.attended_events.past
+    @created_events = @current_user.events
   end
 
   # GET /users/new
