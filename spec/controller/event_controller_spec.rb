@@ -35,8 +35,8 @@ RSpec.describe EventsController, type: :controller do
     before :each do
       session[:user_id] = subject.id
       event_info = post :create, params: { event: { name: 'Birthday Party', date: Date.today,
-                                       location: 'Carribean Island',
-                                       description: 'To mark Amanda and Thais birthay' } }
+                                                    location: 'Carribean Island',
+                                                    description: 'To mark Amanda and Thais birthay' } }
     end
 
     it 'Initial event data' do

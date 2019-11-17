@@ -8,8 +8,8 @@ RSpec.describe Event, type: :model do
   before { subject.save }
   before do
     event = subject.events.create(name: 'Birthday Party', date: Date.today,
-                                          location: 'Carribean Island',
-                                          description: 'To mark Amanda and Thais birthay')
+                                  location: 'Carribean Island',
+                                  description: 'To mark Amanda and Thais birthay')
   end
 
   it 'should be valid' do
