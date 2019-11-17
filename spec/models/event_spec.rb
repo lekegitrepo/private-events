@@ -7,7 +7,7 @@ RSpec.describe Event, type: :model do
   subject { User.new(name: 'test_name', email: 'test_name@gmail.com') }
   before { subject.save }
   before do
-    event = subject.events_created.create(name: 'Birthday Party', date: Date.today,
+    event = subject.events.create(name: 'Birthday Party', date: Date.today,
                                           location: 'Carribean Island',
                                           description: 'To mark Amanda and Thais birthay')
   end
@@ -34,5 +34,22 @@ RSpec.describe Event, type: :model do
   it 'should be invalid for nill creator' do
     event.creator = nil
     expect(event).to_not be_valid
+  end
+
+  describe 'Associations' do
+    it 'event belongs to creator' do
+      assc = described_class.reflect_on_association(:creator)
+      expect(assc.macro).to eq :belongs_to
+    end
+
+    it 'event has many attendees' do
+      assc = described_class.reflect_on_association(:attendees)
+      expect(assc.macro).to eq :has_many
+    end
+
+    it 'event has many attendances' do
+      assc = described_class.reflect_on_association(:attendances)
+      expect(assc.macro).to eq :has_many
+    end
   end
 end
