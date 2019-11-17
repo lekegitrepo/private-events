@@ -33,7 +33,7 @@ class EventsController < ApplicationController
       redirect_to login_path, notice: 'Please login'
       return
     else
-      @event = current_user.events_created.build(event_params)
+      @event = current_user.events.build(event_params)
     end
 
     # return redirect_to login_path, notice: 'Please login' if current_user.nil?

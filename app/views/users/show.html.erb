@@ -8,8 +8,7 @@
   <%= @user.email %>
 </div>
   <p><strong>Events Created by <%= @user.name %></strong></p>
-  <% @user_events.events_created.each do |event| %>
-  <%# @user_events_created.each do |event| %>
+  <% @user.events.each do |event| %>
     <ul>
       <li><%= event.name %></li>
     </ul>
@@ -22,7 +21,7 @@
   <h3><strong>List of Events Attendance for <%= @user.name %></strong></h3>
   <div>
     <h4>Upcoming Events</h4>
-    <% @user_events.attended_events.upcoming.each do |upcoming_event| %>
+    <% @user.events.upcoming.each do |upcoming_event| %>
       <ul>
         <li><%= upcoming_event.name %></li>
       </ul>
@@ -30,7 +29,7 @@
   </div>
   <div>
     <h4>Past Events</h4>
-    <% @user_events.attended_events.past.each do |past_event| %>
+    <% @user.events.past.each do |past_event| %>
       <ul>
         <li><%= past_event.name %></li>
       </ul>
