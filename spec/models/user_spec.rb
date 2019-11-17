@@ -29,4 +29,16 @@ RSpec.describe User, type: :model do
     subject.name = 't' * 25
     expect(subject).to_not be_valid
   end
+
+  describe 'Associations' do
+    it 'user has many events' do
+      assc = described_class.reflect_on_association(:events)
+      expect(assc.macro).to eq :has_many
+    end
+
+    it 'user has many attendances' do
+      assc = described_class.reflect_on_association(:attendances)
+      expect(assc.macro).to eq :has_many
+    end
+  end
 end
