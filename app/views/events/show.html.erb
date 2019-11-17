@@ -29,8 +29,8 @@
 <hr>
 
 <div><strong>List of Attendees</strong></div>
-<% @event_attendees.attendees.each do |attendee| %>
-  <p> <%= attendee %> </p>
+<% @event.attendees.each do |attendee| %>
+  <p> <%= attendee.name %> </p>
 <% end %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |

@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @current_user = User.find(params[:id])
+    @upcoming_events = @current_user.attended_events.upcoming
+    @past_events = @current_user.attended_events.past
   end
 
   # GET /users/new
@@ -61,12 +63,6 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def upcoming
-  end
-
-  def previous
   end
 
   private

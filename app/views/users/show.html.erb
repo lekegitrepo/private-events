@@ -21,7 +21,7 @@
   <h3><strong>List of Events Attendance for <%= @user.name %></strong></h3>
   <div>
     <h4>Upcoming Events</h4>
-    <% @user.events.upcoming.each do |upcoming_event| %>
+    <% @upcoming_events.each do |upcoming_event| %>
       <ul>
         <li><%= upcoming_event.name %></li>
       </ul>
@@ -29,7 +29,7 @@
   </div>
   <div>
     <h4>Past Events</h4>
-    <% @user.events.past.each do |past_event| %>
+    <% @past_events.past.each do |past_event| %>
       <ul>
         <li><%= past_event.name %></li>
       </ul>
