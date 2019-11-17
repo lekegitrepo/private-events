@@ -26,7 +26,6 @@ RSpec.describe 'User sign up and login', type: :feature do
 
   scenario 'login for valid new user' do
     visit '/login'
-    # fill_in 'Name', with: 'test_user'
     fill_in 'Email', with: 'test_user@gmail.com'
     click_button 'Sign In'
 
@@ -35,7 +34,6 @@ RSpec.describe 'User sign up and login', type: :feature do
 
   scenario 'login for invalid new user' do
     visit '/login'
-    # fill_in 'Name', with: 'test_user'
     fill_in 'Email', with: 'test@gmail.com'
     click_button 'Sign In'
 

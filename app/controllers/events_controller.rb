@@ -2,7 +2,6 @@
 
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
-  # before_action :logged_in?
 
   # GET /events
   # GET /events.json
@@ -29,16 +28,12 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    # @event = Event.new(event_params)
-    # @event = current_user.events.build(event_params)
     if current_user.nil?
       redirect_to login_path, notice: 'Please login'
       return
     else
       @event = current_user.events.build(event_params)
     end
-
-    # return redirect_to login_path, notice: 'Please login' if current_user.nil?
 
     respond_to do |format|
       if @event.save
