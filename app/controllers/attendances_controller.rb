@@ -6,13 +6,13 @@ class AttendancesController < ApplicationController
   end
 
   def create
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:event_id])
     current_user.attend(@event)
     redirect_to @event
   end
 
   def cancel
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:event_id])
     current_user.cancel(@event)
     redirect_to @event
   end

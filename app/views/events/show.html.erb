@@ -3,7 +3,14 @@
 <hr>
 
 <p>Event Creator: <strong> <%= @event.creator.name %> </strong></p>
-
+<div>
+  <% if current_user.attending?(@event)%>
+     <%= link_to 'Cancel', attendances_path(event_id: @event.id), method: :delete,  class: "btn btn-danger" %>
+  <%else %>
+  <%= link_to 'Attend', attendances_path(event_id: @event.id), method: :post, class: "btn btn-success" %>
+  <%end%>
+</div>
+ 
 <hr>
 
 <p>
@@ -29,6 +36,7 @@
 <hr>
 
 <div><strong>List of Attendees</strong></div>
+
 <% @event.attendees.each do |attendee| %>
   <p> <%= attendee.name %> </p>
 <% end %>
