@@ -3,15 +3,44 @@
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
-  <% @user_events_created.each do |event| %>
-    <li><%= event.name %></li>
-  <% end %>
-</p>
-
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
-</p>
+</div>
+  <p><strong>Events Created by <%= @user.name %></strong></p>
+  <% @created_events.each do |event| %>
+    <ul>
+      <li><%= event.name %></li>
+    </ul>
+  <% end %>
+</div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<br>
+
+<div>
+  <h3><strong>List of Events Attendance for <%= @user.name %></strong></h3>
+  <div>
+    <h4>Upcoming Events</h4>
+    <% @upcoming_events.each do |upcoming_event| %>
+      <ul>
+        <li><%= upcoming_event.name %></li>
+      </ul>
+    <% end %>
+  </div>
+  <div>
+    <h4>Past Events</h4>
+    <% @past_events.past.each do |past_event| %>
+      <ul>
+        <li><%= past_event.name %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>
+
+<br>
+<br>
+
+<% if current_user %>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+<% end %>
 <%= link_to 'Back', users_path %>

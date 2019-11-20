@@ -12,7 +12,10 @@
   <body>
     <% if current_user %>
       <p>Signed in: <%= current_user.name %></p>
-      <%= link_to 'Sign out', logout_path, method: :delete %>
+      <p>
+        <span><%= link_to 'Sign out', logout_path, method: :delete %> </span>|
+        <span> <%= link_to 'Create New Event', new_event_path %></span>
+      </p>
     <% end %>
 
     <%= yield %>

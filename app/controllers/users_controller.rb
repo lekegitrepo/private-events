@@ -10,7 +10,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user_events_created = @user.events_created.all
+    @current_user = User.find(params[:id])
+    @upcoming_events = @current_user.attended_events.upcoming
+    @past_events = @current_user.attended_events.past
+    @created_events = @current_user.events
   end
 
   # GET /users/new
@@ -29,6 +32,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        sign_in @user
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

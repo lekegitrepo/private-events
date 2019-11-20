@@ -1,16 +1,20 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  # before_action :logged_in?
+  before_action :set_event, only: %i[show edit update destroy]
 
   # GET /events
   # GET /events.json
   def index
     @events = Event.all
+    @upcoming_events = Event.upcoming
+    @past_events = Event.past
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    @event_attendees = Event.find(params[:id])
   end
 
   # GET /events/new
@@ -19,19 +23,23 @@ class EventsController < ApplicationController
   end
 
   # GET /events/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
-    # @event = current_user.events.build(event_params)
+    if current_user.nil?
+      redirect_to login_path, notice: 'Please login'
+      return
+    else
+      @event = current_user.events.build(event_params)
+    end
 
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
+        @event.attendees.push(current_user)
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -64,13 +72,14 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:name, :date, :location, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:name, :date, :location, :description)
+  end
 end
