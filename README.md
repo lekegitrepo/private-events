@@ -1,24 +1,29 @@
-# README
+## Private Events
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+Build a site similar to a private <b>Eventbrite</b> which allows users to create events and then manage user signups. Users can create events and send invitations and parties (sound familiar?). Events take place at a specific date and at a location (which you can just store as a string, like “Andy’s House”).
+For more details about the project check the link below:
+https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations#project-2-private-events
 
-Things you may want to cover:
+## Author:
 
-* Ruby version
+-   [Adeleke Temitayo](https://github.com/lekegitrepo)
 
-* System dependencies
+## Getting started
 
-* Configuration
+To get started with the app, clone the repo and then install the needed gems:
 
-* Database creation
+```
+$ bundle install --without production
+```
 
-* Database initialization
+Next, migrate the database:
 
-* How to run the test suite
+```
+$ rails db:migrate
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+You are ready to run the app in a local server:
 
-* Deployment instructions
-
-* ...
+```
+$ rails server
